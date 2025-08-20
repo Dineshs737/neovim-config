@@ -377,14 +377,14 @@ require("lazy").setup({
 
       -- Configure each language server
       local servers = {
-        tsserver = {},
-        html = { filetypes = { "html", "twig", "hbs" } },
-        cssls = {},
-        tailwindcss = {},
-        emmet_ls = {},
-        jsonls = {},
-        pyright = {},
-        gopls = {},
+        tsserver      = {},
+        html          = { filetypes = { "html", "twig", "hbs" } },
+        cssls         = {},
+        tailwindcss   = {},
+        emmet_ls      = {},
+        jsonls        = {},
+        pyright       = {},
+        gopls         = {},
         rust_analyzer = {
           settings = {
             ["rust-analyzer"] = {
@@ -394,10 +394,10 @@ require("lazy").setup({
             },
           },
         },
-        jdtls = {},
-        intelephense = {},
-        clangd = {},
-        lua_ls = {
+        jdtls         = {},
+        intelephense  = {},
+        clangd        = {},
+        lua_ls        = {
           settings = {
             Lua = {
               runtime = { version = "LuaJIT" },
@@ -411,9 +411,9 @@ require("lazy").setup({
             },
           },
         },
-        yamlls = {},
-        dockerls = {},
-        prismals = {},
+        yamlls        = {},
+        dockerls      = {},
+        prismals      = {},
       }
 
       for server, config in pairs(servers) do
@@ -549,7 +549,7 @@ require("lazy").setup({
     end,
   },
 
-  {
+  --[[  {
     "mfussenegger/nvim-lint",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
@@ -574,7 +574,34 @@ require("lazy").setup({
       })
     end,
   },
+]]
 
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local lint = require("lint")
+
+      lint.linters_by_ft = {
+        javascript = { "eslint_d" },
+        typescript = { "eslint_d" },
+        javascriptreact = { "eslint_d" },
+        typescriptreact = { "eslint_d" },
+        python = { "flake8" },
+        php = { "phpcs" },
+      }
+
+      local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+
+      -- Fixed: Changed "BufEnterPost" to "BufEnter"
+      vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+        group = lint_augroup,
+        callback = function()
+          lint.try_lint()
+        end,
+      })
+    end,
+  },
   -- ============================================================================================
   -- GIT INTEGRATION
   -- ============================================================================================
