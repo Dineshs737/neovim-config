@@ -30,29 +30,29 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Essential settings
-vim.opt.number = true           -- Show line numbers
-vim.opt.relativenumber = true   -- Show relative line numbers
-vim.opt.mouse = "a"             -- Enable mouse support
+vim.opt.number = true             -- Show line numbers
+vim.opt.relativenumber = true     -- Show relative line numbers
+vim.opt.mouse = "a"               -- Enable mouse support
 vim.opt.clipboard = "unnamedplus" -- Use system clipboard
-vim.opt.ignorecase = true       -- Case insensitive search
-vim.opt.smartcase = true        -- Case sensitive if uppercase present
-vim.opt.hlsearch = false        -- Don't highlight search results
-vim.opt.wrap = false            -- Don't wrap lines
-vim.opt.breakindent = true      -- Preserve indent on wrapped lines
-vim.opt.tabstop = 2             -- Tab width
-vim.opt.shiftwidth = 2          -- Indent width
-vim.opt.expandtab = true        -- Use spaces instead of tabs
-vim.opt.autoindent = true       -- Auto indent new lines
-vim.opt.smartindent = true      -- Smart indentation
-vim.opt.cursorline = true       -- Highlight current line
-vim.opt.termguicolors = true    -- Enable 24-bit RGB colors
-vim.opt.signcolumn = "yes"      -- Always show sign column
-vim.opt.updatetime = 250        -- Faster completion
-vim.opt.timeoutlen = 300        -- Faster key sequence completion
-vim.opt.splitright = true       -- Vertical splits to the right
-vim.opt.splitbelow = true       -- Horizontal splits below
-vim.opt.scrolloff = 8           -- Keep 8 lines above/below cursor
-vim.opt.sidescrolloff = 8       -- Keep 8 columns left/right of cursor
+vim.opt.ignorecase = true         -- Case insensitive search
+vim.opt.smartcase = true          -- Case sensitive if uppercase present
+vim.opt.hlsearch = false          -- Don't highlight search results
+vim.opt.wrap = false              -- Don't wrap lines
+vim.opt.breakindent = true        -- Preserve indent on wrapped lines
+vim.opt.tabstop = 2               -- Tab width
+vim.opt.shiftwidth = 2            -- Indent width
+vim.opt.expandtab = true          -- Use spaces instead of tabs
+vim.opt.autoindent = true         -- Auto indent new lines
+vim.opt.smartindent = true        -- Smart indentation
+vim.opt.cursorline = true         -- Highlight current line
+vim.opt.termguicolors = true      -- Enable 24-bit RGB colors
+vim.opt.signcolumn = "yes"        -- Always show sign column
+vim.opt.updatetime = 250          -- Faster completion
+vim.opt.timeoutlen = 300          -- Faster key sequence completion
+vim.opt.splitright = true         -- Vertical splits to the right
+vim.opt.splitbelow = true         -- Horizontal splits below
+vim.opt.scrolloff = 8             -- Keep 8 lines above/below cursor
+vim.opt.sidescrolloff = 8         -- Keep 8 columns left/right of cursor
 
 -- Undo settings
 vim.opt.undofile = true
@@ -62,7 +62,7 @@ vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
 -- PLUGIN CONFIGURATION WITH LAZY.NVIM
 -- ================================================================================================
 require("lazy").setup({
-  
+
   -- ============================================================================================
   -- COLORSCHEME & UI
   -- ============================================================================================
@@ -349,24 +349,24 @@ require("lazy").setup({
       require("mason-lspconfig").setup({
         ensure_installed = {
           -- Web Development
-          "ts_ls",          -- TypeScript/JavaScript (updated from tsserver)
-          "html",           -- HTML
-          "cssls",          -- CSS
-          "tailwindcss",    -- Tailwind CSS
-          "emmet_ls",       -- Emmet
-          "jsonls",         -- JSON
+          "ts_ls",         -- TypeScript/JavaScript (updated from tsserver)
+          "html",          -- HTML
+          "cssls",         -- CSS
+          "tailwindcss",   -- Tailwind CSS
+          "emmet_ls",      -- Emmet
+          "jsonls",        -- JSON
           -- Backend
-          "pyright",        -- Python
-          "gopls",          -- Go
-          "rust_analyzer",  -- Rust
-          "jdtls",          -- Java
-          "intelephense",   -- PHP
-          "clangd",         -- C/C++
+          "pyright",       -- Python
+          "gopls",         -- Go
+          "rust_analyzer", -- Rust
+          "jdtls",         -- Java
+          "intelephense",  -- PHP
+          "clangd",        -- C/C++
           -- Config/Data
-          "lua_ls",         -- Lua
-          "yamlls",         -- YAML
-          "dockerls",       -- Docker
-          "prismals",       -- Prisma
+          "lua_ls",        -- Lua
+          "yamlls",        -- YAML
+          "dockerls",      -- Docker
+          "prismals",      -- Prisma
         },
         automatic_installation = true,
       })
@@ -429,12 +429,12 @@ require("lazy").setup({
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",     -- LSP source
-      "hrsh7th/cmp-buffer",       -- Buffer source
-      "hrsh7th/cmp-path",         -- Path source
-      "hrsh7th/cmp-cmdline",      -- Cmdline source
-      "L3MON4D3/LuaSnip",        -- Snippet engine
-      "saadparwaiz1/cmp_luasnip", -- Snippet source
+      "hrsh7th/cmp-nvim-lsp",         -- LSP source
+      "hrsh7th/cmp-buffer",           -- Buffer source
+      "hrsh7th/cmp-path",             -- Path source
+      "hrsh7th/cmp-cmdline",          -- Cmdline source
+      "L3MON4D3/LuaSnip",             -- Snippet engine
+      "saadparwaiz1/cmp_luasnip",     -- Snippet source
       "rafamadriz/friendly-snippets", -- VS Code like snippets
     },
     config = function()
@@ -508,45 +508,69 @@ require("lazy").setup({
   },
 
   -- ============================================================================================
-  -- FORMATTING & LINTING
+  -- FORMATTING & LINTING - Using conform.nvim and nvim-lint
   -- ============================================================================================
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
     config = function()
-      local null_ls = require("null-ls")
-      
-      null_ls.setup({
-        sources = {
+      require("conform").setup({
+        formatters_by_ft = {
           -- JavaScript/TypeScript
-          null_ls.builtins.formatting.prettier.with({
-            filetypes = {
-              "javascript", "typescript", "javascriptreact", "typescriptreact",
-              "css", "scss", "html", "json", "yaml", "markdown"
-            },
-          }),
-          null_ls.builtins.diagnostics.eslint,
-          
-          -- Python
-          null_ls.builtins.formatting.black,
-          null_ls.builtins.diagnostics.flake8,
-          
-          -- Go
-          null_ls.builtins.formatting.gofmt,
-          null_ls.builtins.formatting.goimports,
-          
-          -- Rust (handled by rust-analyzer)
-          
-          -- Lua
-          null_ls.builtins.formatting.stylua,
-          
+          javascript = { "prettier" },
+          typescript = { "prettier" },
+          javascriptreact = { "prettier" },
+          typescriptreact = { "prettier" },
+          -- Web
+          html = { "prettier" },
+          css = { "prettier" },
+          scss = { "prettier" },
+          json = { "prettier" },
+          yaml = { "prettier" },
+          markdown = { "prettier" },
+          -- Backend
+          python = { "black" },
+          go = { "goimports", "gofmt" },
+          rust = { "rustfmt" },
+          -- Config
+          lua = { "stylua" },
+          -- Systems
+          c = { "clang_format" },
+          cpp = { "clang_format" },
           -- PHP
-          null_ls.builtins.formatting.phpcbf,
-          null_ls.builtins.diagnostics.phpcs,
-          
-          -- C/C++
-          null_ls.builtins.formatting.clang_format,
+          php = { "phpcbf" },
         },
+        format_on_save = {
+          timeout_ms = 500,
+          lsp_fallback = true,
+        },
+      })
+    end,
+  },
+
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local lint = require("lint")
+
+      lint.linters_by_ft = {
+        javascript = { "eslint_d" },
+        typescript = { "eslint_d" },
+        javascriptreact = { "eslint_d" },
+        typescriptreact = { "eslint_d" },
+        python = { "flake8" },
+        php = { "phpcs" },
+      }
+
+      local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+
+      vim.api.nvim_create_autocmd({ "BufEnterPost", "BufWritePost", "InsertLeave" }, {
+        group = lint_augroup,
+        callback = function()
+          lint.try_lint()
+        end,
       })
     end,
   },
@@ -632,13 +656,13 @@ require("lazy").setup({
   -- ============================================================================================
   -- ADDITIONAL PRODUCTIVITY PLUGINS
   -- ============================================================================================
-  
+
   -- Auto pairs
   {
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup({})
-      
+
       -- Integration with nvim-cmp
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       local cmp = require("cmp")
@@ -753,12 +777,15 @@ vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementa
 vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature help" })
 vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, { desc = "Add workspace folder" })
 vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, { desc = "Remove workspace folder" })
-vim.keymap.set("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, { desc = "List workspace folders" })
+vim.keymap.set("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+  { desc = "List workspace folders" })
 vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Type definition" })
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
 vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "References" })
-vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, { desc = "Format" })
+vim.keymap.set("n", "<leader>f", function()
+  require("conform").format({ async = true, lsp_fallback = true })
+end, { desc = "Format" })
 
 -- Diagnostics
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
@@ -808,10 +835,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
 })
 
--- Auto format on save
+-- Auto format on save (using conform.nvim)
 vim.api.nvim_create_autocmd("BufWritePre", {
-  callback = function()
-    vim.lsp.buf.format({ async = false })
+  callback = function(args)
+    require("conform").format({
+      bufnr = args.buf,
+      async = false,
+      lsp_fallback = true
+    })
   end,
 })
 
