@@ -62,7 +62,7 @@ vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
 -- PLUGIN CONFIGURATION WITH LAZY.NVIM
 -- ================================================================================================
 require("lazy").setup({
-  
+
   -- ============================================================================================
   -- COLORSCHEME & UI
   -- ============================================================================================
@@ -515,7 +515,7 @@ require("lazy").setup({
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       local null_ls = require("null-ls")
-      
+
       null_ls.setup({
         sources = {
           -- JavaScript/TypeScript
@@ -526,24 +526,24 @@ require("lazy").setup({
             },
           }),
           null_ls.builtins.diagnostics.eslint,
-          
+
           -- Python
           null_ls.builtins.formatting.black,
           null_ls.builtins.diagnostics.flake8,
-          
+
           -- Go
           null_ls.builtins.formatting.gofmt,
           null_ls.builtins.formatting.goimports,
-          
+
           -- Rust (handled by rust-analyzer)
-          
+
           -- Lua
           null_ls.builtins.formatting.stylua,
-          
+
           -- PHP
           null_ls.builtins.formatting.phpcbf,
           null_ls.builtins.diagnostics.phpcs,
-          
+
           -- C/C++
           null_ls.builtins.formatting.clang_format,
         },
@@ -632,13 +632,13 @@ require("lazy").setup({
   -- ============================================================================================
   -- ADDITIONAL PRODUCTIVITY PLUGINS
   -- ============================================================================================
-  
+
   -- Auto pairs
   {
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup({})
-      
+
       -- Integration with nvim-cmp
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       local cmp = require("cmp")
