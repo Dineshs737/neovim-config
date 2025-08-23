@@ -130,12 +130,8 @@ require("lazy").setup({
 				default = true,
 			})
 		end,
-	},
-
-	-- ============================================================================================
-	-- FILE EXPLORER
-	-- ============================================================================================
-	{
+	}	-- ============================================================================================
+	--[[	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
@@ -181,6 +177,110 @@ require("lazy").setup({
 						info = "",
 						warning = "",
 						error = "",
+					},
+				},
+				filters = {
+					dotfiles = false,
+					custom = { "node_modules", "\\.cache" },
+				},
+				git = {
+					enable = true,
+					ignore = true,
+					timeout = 400,
+				},
+				actions = {
+					use_system_clipboard = true,
+					change_dir = {
+						enable = true,
+						global = false,
+						restrict_above_cwd = false,
+					},
+					open_file = {
+						quit_on_open = false,
+						resize_window = true,
+						window_picker = {
+							enable = true,
+							chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+							exclude = {
+								filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+								buftype = { "nofile", "terminal", "help" },
+							},
+						},
+					},
+				},
+			})
+		end,
+	},]]
+
+	-- ============================================================================================
+	-- FILE EXPLORER - FIXED VERSION
+	-- ============================================================================================
+, -- ============================================================================================ -- FILE EXPLORER
+	{
+		"nvim-tree/nvim-tree.lua",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			-- Define diagnostic signs before nvim-tree setup
+			local signs = {
+				Error = "✘",
+				Warn = "▲",
+				Hint = "⚑",
+				Info = "ℹ",
+			}
+
+			-- Define the diagnostic signs that nvim-tree expects
+			for type, icon in pairs(signs) do
+				local hl = "DiagnosticSign" .. type
+				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+
+				-- Also define the nvim-tree specific signs
+				local nvim_tree_hl = "NvimTreeDiagnostic" .. type .. "Icon"
+				vim.fn.sign_define(nvim_tree_hl, { text = icon, texthl = hl, numhl = hl })
+			end
+
+			require("nvim-tree").setup({
+				disable_netrw = true,
+				hijack_netrw = true,
+				view = {
+					width = 35,
+					side = "left",
+				},
+				renderer = {
+					add_trailing = false,
+					group_empty = false,
+					highlight_git = false,
+					highlight_opened_files = "none",
+					root_folder_modifier = ":~",
+					indent_markers = {
+						enable = false,
+						icons = {
+							corner = "└ ",
+							edge = "│ ",
+							none = "  ",
+						},
+					},
+					icons = {
+						webdev_colors = true,
+						git_placement = "before",
+						padding = " ",
+						symlink_arrow = " ➛ ",
+						show = {
+							file = true,
+							folder = true,
+							folder_arrow = true,
+							git = true,
+						},
+					},
+				},
+				diagnostics = {
+					enable = true,
+					show_on_dirs = false,
+					debounce_delay = 50,
+					icons = {
+						hint = "⚑",
+						info = "ℹ",
+						warning = "▲",
+						error = "✘",
 					},
 				},
 				filters = {
