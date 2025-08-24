@@ -37,7 +37,9 @@ vim.opt.clipboard = "unnamedplus" -- Use system clipboard
 vim.opt.ignorecase = true -- Case insensitive search
 vim.opt.smartcase = true -- Case sensitive if uppercase present
 vim.opt.hlsearch = false -- Don't highlight search results
-vim.opt.wrap = false -- Don't wrap lines
+vim.opt.wrap = true -- Don't wrap lines
+vim.o.linebreak = true -- breaks at word boundary instead of middle of word
+vim.o.breakindent = true -- keeps indentation when wrapped
 vim.opt.breakindent = true -- Preserve indent on wrapped lines
 vim.opt.tabstop = 2 -- Tab width
 vim.opt.shiftwidth = 2 -- Indent width
@@ -130,8 +132,7 @@ require("lazy").setup({
 				default = true,
 			})
 		end,
-	}	-- ============================================================================================
-	--[[	{
+	} --[[	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
@@ -211,11 +212,10 @@ require("lazy").setup({
 			})
 		end,
 	},]]
-
 	-- ============================================================================================
 	-- FILE EXPLORER - FIXED VERSION
 	-- ============================================================================================
-, -- ============================================================================================ -- FILE EXPLORER
+, -- ============================================================================================ -- FILE EXPLORER -- ============================================================================================
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
