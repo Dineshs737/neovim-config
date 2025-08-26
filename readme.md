@@ -39,7 +39,7 @@ mv ~/.local/share/nvim ~/.local/share/nvim.bak
 2. Clone this configuration:
 
 ```bash
-git clone <git@github.com:Dineshs737/neovim-config.git> ~/.config/nvim
+git clone git@github.com:Dineshs737/neovim-config.git ~/.config/nvim
 ```
 
 3. Start Neovim:
