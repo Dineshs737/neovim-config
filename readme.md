@@ -5,6 +5,7 @@ A comprehensive Neovim configuration that provides an IDE-like experience for mo
 ## Requirements
 
 ### System Requirements
+
 - Neovim >= 0.8.0
 - Git
 - A Nerd Font for icons (recommended: JetBrainsMono Nerd Font)
@@ -14,7 +15,9 @@ A comprehensive Neovim configuration that provides an IDE-like experience for mo
 - `ripgrep` for Telescope live grep functionality
 
 ### Language-Specific Requirements
+
 For full functionality, the following language servers and tools should be installed:
+
 - JavaScript/TypeScript: `node`, `npm`
 - Python: `python3`, `pip`
 - Go: `go`
@@ -27,17 +30,20 @@ For full functionality, the following language servers and tools should be insta
 ## Installation
 
 1. Backup your existing Neovim configuration:
+
 ```bash
 mv ~/.config/nvim ~/.config/nvim.bak
 mv ~/.local/share/nvim ~/.local/share/nvim.bak
 ```
 
 2. Clone this configuration:
+
 ```bash
-git clone <repository-url> ~/.config/nvim
+git clone <git@github.com:Dineshs737/neovim-config.git> ~/.config/nvim
 ```
 
 3. Start Neovim:
+
 ```bash
 nvim
 ```
@@ -55,6 +61,7 @@ nvim
 ## Features
 
 ### Languages & Frameworks Support
+
 - JavaScript/TypeScript
 - React, Vue, Svelte
 - Python
@@ -69,6 +76,7 @@ nvim
 - and more...
 
 ### IDE Features
+
 - 🔍 Fuzzy Finding (Telescope)
 - 📁 File Explorer (Nvim-tree)
 - 🔤 Auto-completion (nvim-cmp)
@@ -85,14 +93,17 @@ nvim
 ## Keyboard Shortcuts
 
 ### General
+
 - `<Space>` - Leader key
 - `<Esc>` - Clear search highlights
 
 ### File Explorer (NvimTree)
+
 - `<leader>e` - Toggle file explorer
 - `<leader>o` - Focus file explorer
 
 ### Fuzzy Finding (Telescope)
+
 - `<leader>ff` - Find files
 - `<leader>fg` - Live grep
 - `<leader>fb` - Find buffers
@@ -101,6 +112,7 @@ nvim
 - `<leader>fs` - Find symbols
 
 ### LSP
+
 - `gD` - Go to declaration
 - `gd` - Go to definition
 - `K` - Hover documentation
@@ -112,32 +124,38 @@ nvim
 - `<leader>f` - Format document
 
 ### Diagnostics
+
 - `[d` - Previous diagnostic
 - `]d` - Next diagnostic
 - `<leader>q` - Diagnostic list
 
 ### Buffer Navigation
+
 - `<leader>bp` - Previous buffer
 - `<leader>bn` - Next buffer
 - `<leader>bd` - Delete buffer
 
 ### Window Navigation
+
 - `<C-h>` - Move to left window
 - `<C-j>` - Move to window below
 - `<C-k>` - Move to window above
 - `<C-l>` - Move to right window
 
 ### Window Resizing
+
 - `<C-Up>` - Increase window height
 - `<C-Down>` - Decrease window height
 - `<C-Left>` - Decrease window width
 - `<C-Right>` - Increase window width
 
 ### Git
+
 - `<leader>gp` - Preview hunk
 - `<leader>gt` - Toggle line blame
 
 ### Terminal
+
 - `<C-\>` - Toggle floating terminal
 
 ## Customization
@@ -179,11 +197,13 @@ The configuration is modular and can be customized:
 ## Updating
 
 1. Update plugins:
+
    ```
    :Lazy update
    ```
 
 2. Update LSP servers:
+
    ```
    :Mason update
    ```
@@ -196,6 +216,7 @@ The configuration is modular and can be customized:
 ## Credits
 
 This configuration includes and configures the following major plugins:
+
 - lazy.nvim
 - nvim-lspconfig
 - nvim-cmp
