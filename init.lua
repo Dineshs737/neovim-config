@@ -125,7 +125,7 @@ require("lazy").setup({
 	},
 
 	-- Enhanced Icons Configuration
-	{
+	--[[	{
 		"nvim-tree/nvim-web-devicons",
 		config = function()
 			require("nvim-web-devicons").setup({
@@ -450,7 +450,143 @@ require("lazy").setup({
 			})
 		end,
 	},
+]]
 
+	{
+		"nvim-tree/nvim-web-devicons",
+		config = function()
+			require("nvim-web-devicons").setup({
+				override_by_filename = {
+					[".gitignore"] = {
+						icon = "",
+						color = "#f1502f",
+						name = "Gitignore",
+					},
+					["Dockerfile"] = {
+						icon = "󰡨",
+						color = "#2496ED",
+						name = "Dockerfile",
+					},
+					["docker-compose.yml"] = {
+						icon = "󰡨",
+						color = "#2496ED",
+						name = "DockerCompose",
+					},
+					["package.json"] = {
+						icon = "",
+						color = "#e8274b",
+						name = "PackageJson",
+					},
+					["package-lock.json"] = {
+						icon = "",
+						color = "#cb3837",
+						name = "PackageLockJson",
+					},
+					["yarn.lock"] = {
+						icon = "",
+						color = "#2C8EBB",
+						name = "YarnLock",
+					},
+					["README.md"] = {
+						icon = "",
+						color = "#42a5f5",
+						name = "Readme",
+					},
+					["LICENSE"] = {
+						icon = "",
+						color = "#cbcb41",
+						name = "License",
+					},
+					[".env"] = {
+						icon = "",
+						color = "#faf743",
+						name = "Env",
+					},
+					[".env.local"] = {
+						icon = "",
+						color = "#faf743",
+						name = "EnvLocal",
+					},
+					["tsconfig.json"] = {
+						icon = "",
+						color = "#519aba",
+						name = "TsConfig",
+					},
+					["tailwind.config.js"] = {
+						icon = "󱏿",
+						color = "#38bdf8",
+						name = "TailwindConfig",
+					},
+					["next.config.js"] = {
+						icon = "󰔁",
+						color = "#000000",
+						name = "NextConfig",
+					},
+					["vite.config.js"] = {
+						icon = "󱐋",
+						color = "#646CFF",
+						name = "ViteConfig",
+					},
+					["webpack.config.js"] = {
+						icon = "󰜬",
+						color = "#8DD6F9",
+						name = "WebpackConfig",
+					},
+				},
+				override_by_extension = {
+					["js"] = { icon = "", color = "#f7df1e", name = "Js" },
+					["ts"] = { icon = "", color = "#519aba", name = "Ts" },
+					["jsx"] = { icon = "", color = "#61dafb", name = "Jsx" },
+					["tsx"] = { icon = "", color = "#61dafb", name = "Tsx" },
+					["html"] = { icon = "", color = "#e44d26", name = "Html" },
+					["css"] = { icon = "", color = "#1572b6", name = "Css" },
+					["scss"] = { icon = "", color = "#CF649A", name = "Scss" },
+					["sass"] = { icon = "", color = "#CF649A", name = "Sass" },
+					["vue"] = { icon = "", color = "#4FC08D", name = "Vue" },
+					["svelte"] = { icon = "", color = "#ff3e00", name = "Svelte" },
+					["py"] = { icon = "", color = "#3776ab", name = "Python" },
+					["go"] = { icon = "", color = "#00ADD8", name = "Go" },
+					["rs"] = { icon = "", color = "#dea584", name = "Rust" },
+					["java"] = { icon = "", color = "#f89820", name = "Java" },
+					["php"] = { icon = "", color = "#777BB4", name = "Php" },
+					["cpp"] = { icon = "", color = "#00599C", name = "Cpp" },
+					["c"] = { icon = "", color = "#A8B9CC", name = "C" },
+					["json"] = { icon = "", color = "#cbcb41", name = "Json" },
+					["yaml"] = { icon = "", color = "#cc0000", name = "Yaml" },
+					["yml"] = { icon = "", color = "#cc0000", name = "Yml" },
+					["toml"] = { icon = "", color = "#9c4221", name = "Toml" },
+					["xml"] = { icon = "", color = "#e37933", name = "Xml" },
+					["sql"] = { icon = "", color = "#336791", name = "Sql" },
+					["db"] = { icon = "", color = "#dad8d8", name = "Database" },
+					["png"] = { icon = "", color = "#a074c4", name = "Png" },
+					["jpg"] = { icon = "", color = "#a074c4", name = "Jpg" },
+					["jpeg"] = { icon = "", color = "#a074c4", name = "Jpeg" },
+					["gif"] = { icon = "", color = "#a074c4", name = "Gif" },
+					["svg"] = { icon = "", color = "#a074c4", name = "Svg" },
+					["md"] = { icon = "", color = "#519aba", name = "Markdown" },
+					["pdf"] = { icon = "", color = "#b30b00", name = "Pdf" },
+					["txt"] = { icon = "", color = "#89e051", name = "Txt" },
+					["zip"] = { icon = "", color = "#f7df1e", name = "Zip" },
+					["tar"] = { icon = "", color = "#f7df1e", name = "Tar" },
+					["gz"] = { icon = "", color = "#f7df1e", name = "Gz" },
+					["sh"] = { icon = "", color = "#89e051", name = "Shell" },
+					["bash"] = { icon = "", color = "#89e051", name = "Bash" },
+					["zsh"] = { icon = "", color = "#89e051", name = "Zsh" },
+					["lua"] = { icon = "", color = "#51a0cf", name = "Lua" },
+					["vim"] = { icon = "", color = "#019833", name = "Vim" },
+					["log"] = { icon = "", color = "#afcb85", name = "Log" },
+				},
+				override_by_operating_system = {
+					["apple"] = { icon = "", color = "#A2AAAD", cterm_color = "248", name = "Apple" },
+					["linux"] = { icon = "", color = "#F8C52C", cterm_color = "220", name = "Linux" },
+					["windows"] = { icon = "", color = "#00A4EF", cterm_color = "39", name = "Windows" },
+				},
+				color_icons = true,
+				default = true,
+				strict = true,
+			})
+		end,
+	},
 	-- ============================================================================================
 	-- FILE EXPLORER - ENHANCED WITH BETTER ICONS
 	-- ============================================================================================
