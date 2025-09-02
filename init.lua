@@ -4,6 +4,7 @@
 -- This configuration provides a complete IDE-like experience for modern development
 -- Supports: JS/TS, React, Node.js, Python, Go, Java, PHP, C++, Rust, and more
 -- Platform: Linux, Windows, macOS compatible
+-- Enhanced with better file and folder icons
 -- ================================================================================================
 
 -- ================================================================================================
@@ -123,95 +124,336 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Icons
+	-- Enhanced Icons Configuration
 	{
 		"nvim-tree/nvim-web-devicons",
 		config = function()
 			require("nvim-web-devicons").setup({
-				override = {},
+				-- Globally enable different icons for directories
+				override_by_filename = {
+					[".gitignore"] = {
+						icon = "",
+						color = "#f1502f",
+						name = "Gitignore",
+					},
+					["Dockerfile"] = {
+						icon = "󰡨",
+						color = "#2496ED",
+						name = "Dockerfile",
+					},
+					["docker-compose.yml"] = {
+						icon = "󰡨",
+						color = "#2496ED",
+						name = "DockerCompose",
+					},
+					["package.json"] = {
+						icon = "",
+						color = "#e8274b",
+						name = "PackageJson",
+					},
+					["package-lock.json"] = {
+						icon = "",
+						color = "#cb3837",
+						name = "PackageLockJson",
+					},
+					["yarn.lock"] = {
+						icon = "",
+						color = "#2C8EBB",
+						name = "YarnLock",
+					},
+					["README.md"] = {
+						icon = "",
+						color = "#42a5f5",
+						name = "Readme",
+					},
+					["LICENSE"] = {
+						icon = "",
+						color = "#cbcb41",
+						name = "License",
+					},
+					[".env"] = {
+						icon = "",
+						color = "#faf743",
+						name = "Env",
+					},
+					[".env.local"] = {
+						icon = "",
+						color = "#faf743",
+						name = "EnvLocal",
+					},
+					["tsconfig.json"] = {
+						icon = "",
+						color = "#519aba",
+						name = "TsConfig",
+					},
+					["tailwind.config.js"] = {
+						icon = "󱏿",
+						color = "#38bdf8",
+						name = "TailwindConfig",
+					},
+					["next.config.js"] = {
+						icon = "",
+						color = "#000000",
+						name = "NextConfig",
+					},
+					["vite.config.js"] = {
+						icon = "",
+						color = "#646CFF",
+						name = "ViteConfig",
+					},
+					["webpack.config.js"] = {
+						icon = "󰜬",
+						color = "#8DD6F9",
+						name = "WebpackConfig",
+					},
+				},
+				override_by_extension = {
+					-- JavaScript/TypeScript
+					["js"] = {
+						icon = "",
+						color = "#f7df1e",
+						name = "Js",
+					},
+					["ts"] = {
+						icon = "",
+						color = "#519aba",
+						name = "Ts",
+					},
+					["jsx"] = {
+						icon = "",
+						color = "#61dafb",
+						name = "Jsx",
+					},
+					["tsx"] = {
+						icon = "",
+						color = "#61dafb",
+						name = "Tsx",
+					},
+					-- Web Development
+					["html"] = {
+						icon = "",
+						color = "#e44d26",
+						name = "Html",
+					},
+					["css"] = {
+						icon = "",
+						color = "#1572b6",
+						name = "Css",
+					},
+					["scss"] = {
+						icon = "",
+						color = "#CF649A",
+						name = "Scss",
+					},
+					["sass"] = {
+						icon = "",
+						color = "#CF649A",
+						name = "Sass",
+					},
+					["vue"] = {
+						icon = "",
+						color = "#4FC08D",
+						name = "Vue",
+					},
+					["svelte"] = {
+						icon = "",
+						color = "#ff3e00",
+						name = "Svelte",
+					},
+					-- Backend Languages
+					["py"] = {
+						icon = "",
+						color = "#3776ab",
+						name = "Python",
+					},
+					["go"] = {
+						icon = "",
+						color = "#00ADD8",
+						name = "Go",
+					},
+					["rs"] = {
+						icon = "",
+						color = "#dea584",
+						name = "Rust",
+					},
+					["java"] = {
+						icon = "",
+						color = "#f89820",
+						name = "Java",
+					},
+					["php"] = {
+						icon = "",
+						color = "#777BB4",
+						name = "Php",
+					},
+					["cpp"] = {
+						icon = "",
+						color = "#00599C",
+						name = "Cpp",
+					},
+					["c"] = {
+						icon = "",
+						color = "#A8B9CC",
+						name = "C",
+					},
+					-- Data & Config
+					["json"] = {
+						icon = "",
+						color = "#cbcb41",
+						name = "Json",
+					},
+					["yaml"] = {
+						icon = "",
+						color = "#cc0000",
+						name = "Yaml",
+					},
+					["yml"] = {
+						icon = "",
+						color = "#cc0000",
+						name = "Yml",
+					},
+					["toml"] = {
+						icon = "",
+						color = "#9c4221",
+						name = "Toml",
+					},
+					["xml"] = {
+						icon = "",
+						color = "#e37933",
+						name = "Xml",
+					},
+					-- Database
+					["sql"] = {
+						icon = "",
+						color = "#336791",
+						name = "Sql",
+					},
+					["db"] = {
+						icon = "",
+						color = "#dad8d8",
+						name = "Database",
+					},
+					-- Images
+					["png"] = {
+						icon = "",
+						color = "#a074c4",
+						name = "Png",
+					},
+					["jpg"] = {
+						icon = "",
+						color = "#a074c4",
+						name = "Jpg",
+					},
+					["jpeg"] = {
+						icon = "",
+						color = "#a074c4",
+						name = "Jpeg",
+					},
+					["gif"] = {
+						icon = "",
+						color = "#a074c4",
+						name = "Gif",
+					},
+					["svg"] = {
+						icon = "",
+						color = "#a074c4",
+						name = "Svg",
+					},
+					-- Documents
+					["md"] = {
+						icon = "",
+						color = "#519aba",
+						name = "Markdown",
+					},
+					["pdf"] = {
+						icon = "",
+						color = "#b30b00",
+						name = "Pdf",
+					},
+					["txt"] = {
+						icon = "",
+						color = "#89e051",
+						name = "Txt",
+					},
+					-- Archives
+					["zip"] = {
+						icon = "",
+						color = "#f7df1e",
+						name = "Zip",
+					},
+					["tar"] = {
+						icon = "",
+						color = "#f7df1e",
+						name = "Tar",
+					},
+					["gz"] = {
+						icon = "",
+						color = "#f7df1e",
+						name = "Gz",
+					},
+					-- Shell scripts
+					["sh"] = {
+						icon = "",
+						color = "#89e051",
+						name = "Shell",
+					},
+					["bash"] = {
+						icon = "",
+						color = "#89e051",
+						name = "Bash",
+					},
+					["zsh"] = {
+						icon = "",
+						color = "#89e051",
+						name = "Zsh",
+					},
+					-- Other
+					["lua"] = {
+						icon = "",
+						color = "#51a0cf",
+						name = "Lua",
+					},
+					["vim"] = {
+						icon = "",
+						color = "#019833",
+						name = "Vim",
+					},
+					["log"] = {
+						icon = "",
+						color = "#afcb85",
+						name = "Log",
+					},
+				},
+				override_by_operating_system = {
+					["apple"] = {
+						icon = "",
+						color = "#A2AAAD",
+						cterm_color = "248",
+						name = "Apple",
+					},
+					["linux"] = {
+						icon = "",
+						color = "#F8C52C",
+						cterm_color = "220",
+						name = "Linux",
+					},
+					["windows"] = {
+						icon = "",
+						color = "#00A4EF",
+						cterm_color = "39",
+						name = "Windows",
+					},
+				},
+				color_icons = true,
 				default = true,
+				strict = true,
 			})
 		end,
-	} --[[	{
-		"nvim-tree/nvim-tree.lua",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("nvim-tree").setup({
-				disable_netrw = true,
-				hijack_netrw = true,
-				view = {
-					width = 35,
-					side = "left",
-				},
-				renderer = {
-					add_trailing = false,
-					group_empty = false,
-					highlight_git = false,
-					highlight_opened_files = "none",
-					root_folder_modifier = ":~",
-					indent_markers = {
-						enable = false,
-						icons = {
-							corner = "└ ",
-							edge = "│ ",
-							none = "  ",
-						},
-					},
-					icons = {
-						webdev_colors = true,
-						git_placement = "before",
-						padding = " ",
-						symlink_arrow = " ➛ ",
-						show = {
-							file = true,
-							folder = true,
-							folder_arrow = true,
-							git = true,
-						},
-					},
-				},
-				diagnostics = {
-					enable = true,
-					show_on_dirs = false,
-					icons = {
-						hint = "",
-						info = "",
-						warning = "",
-						error = "",
-					},
-				},
-				filters = {
-					dotfiles = false,
-					custom = { "node_modules", "\\.cache" },
-				},
-				git = {
-					enable = true,
-					ignore = true,
-					timeout = 400,
-				},
-				actions = {
-					use_system_clipboard = true,
-					change_dir = {
-						enable = true,
-						global = false,
-						restrict_above_cwd = false,
-					},
-					open_file = {
-						quit_on_open = false,
-						resize_window = true,
-						window_picker = {
-							enable = true,
-							chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
-							exclude = {
-								filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
-								buftype = { "nofile", "terminal", "help" },
-							},
-						},
-					},
-				},
-			})
-		end,
-	},]], -- ============================================================================================ -- FILE EXPLORER -- ============================================================================================ -- ============================================================================================ -- FILE EXPLORER - FIXED VERSION -- ============================================================================================
+	},
+
+	-- ============================================================================================
+	-- FILE EXPLORER - ENHANCED WITH BETTER ICONS
+	-- ============================================================================================
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -238,21 +480,23 @@ require("lazy").setup({
 				disable_netrw = true,
 				hijack_netrw = true,
 				view = {
-					width = 35,
+					width = 40, -- Increased width to accommodate icons
 					side = "left",
 				},
 				renderer = {
 					add_trailing = false,
-					group_empty = false,
-					highlight_git = false,
-					highlight_opened_files = "none",
+					group_empty = true, -- Group empty folders
+					highlight_git = true, -- Highlight git status
+					highlight_opened_files = "icon",
 					root_folder_modifier = ":~",
 					indent_markers = {
-						enable = false,
+						enable = true, -- Enable indent markers for better structure
 						icons = {
-							corner = "└ ",
-							edge = "│ ",
-							none = "  ",
+							corner = "└",
+							edge = "│",
+							item = "│",
+							bottom = "─",
+							none = " ",
 						},
 					},
 					icons = {
@@ -266,12 +510,62 @@ require("lazy").setup({
 							folder_arrow = true,
 							git = true,
 						},
+						glyphs = {
+							default = "",
+							symlink = "",
+							bookmark = "󰃃",
+							modified = "●",
+							folder = {
+								arrow_closed = "",
+								arrow_open = "",
+								default = "",
+								open = "",
+								empty = "",
+								empty_open = "",
+								symlink = "",
+								symlink_open = "",
+							},
+							git = {
+								unstaged = "✗",
+								staged = "✓",
+								unmerged = "",
+								renamed = "➜",
+								untracked = "★",
+								deleted = "",
+								ignored = "◌",
+							},
+						},
+					},
+					special_files = {
+						"Cargo.toml",
+						"Makefile",
+						"README.md",
+						"readme.md",
+						"package.json",
+						"composer.json",
+						"go.mod",
+						"requirements.txt",
+						"Dockerfile",
+						"docker-compose.yml",
+						".env",
+						".gitignore",
+						"LICENSE",
+						"tsconfig.json",
+						"webpack.config.js",
+						"vite.config.js",
+						"next.config.js",
+						"tailwind.config.js",
 					},
 				},
 				diagnostics = {
 					enable = true,
-					show_on_dirs = false,
+					show_on_dirs = true, -- Show diagnostics on directories
+					show_on_open_dirs = true,
 					debounce_delay = 50,
+					severity = {
+						min = vim.diagnostic.severity.HINT,
+						max = vim.diagnostic.severity.ERROR,
+					},
 					icons = {
 						hint = "⚑",
 						info = "ℹ",
@@ -281,12 +575,34 @@ require("lazy").setup({
 				},
 				filters = {
 					dotfiles = false,
-					custom = { "node_modules", "\\.cache" },
+					git_clean = false,
+					no_buffer = false,
+					custom = {
+						"node_modules",
+						"\\.cache",
+						"\\.git$",
+						"__pycache__",
+						"*.pyc",
+						"*.pyo",
+						"*.egg-info",
+						".pytest_cache",
+						".coverage",
+						"dist",
+						"build",
+						"target",
+						"*.class",
+						"*.jar",
+						"*.war",
+						"*.ear",
+					},
+					exclude = {},
 				},
 				git = {
 					enable = true,
-					ignore = true,
+					ignore = false, -- Show ignored files
 					timeout = 400,
+					show_on_dirs = true,
+					show_on_open_dirs = true,
 				},
 				actions = {
 					use_system_clipboard = true,
@@ -295,11 +611,25 @@ require("lazy").setup({
 						global = false,
 						restrict_above_cwd = false,
 					},
+					expand_all = {
+						max_folder_discovery = 300,
+						exclude = { ".git", "target", "build", "node_modules" },
+					},
+					file_popup = {
+						open_win_config = {
+							col = 1,
+							row = 1,
+							relative = "cursor",
+							border = "shadow",
+							style = "minimal",
+						},
+					},
 					open_file = {
 						quit_on_open = false,
 						resize_window = true,
 						window_picker = {
 							enable = true,
+							picker = "default",
 							chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
 							exclude = {
 								filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
@@ -307,8 +637,56 @@ require("lazy").setup({
 							},
 						},
 					},
+					remove_file = {
+						close_window = true,
+					},
+				},
+				trash = {
+					cmd = "gio trash",
+					require_confirm = true,
+				},
+				live_filter = {
+					prefix = "[FILTER]: ",
+					always_show_folders = true,
+				},
+				tab = {
+					sync = {
+						open = false,
+						close = false,
+						ignore = {},
+					},
+				},
+				notify = {
+					threshold = vim.log.levels.INFO,
+				},
+				ui = {
+					confirm = {
+						remove = true,
+						trash = true,
+					},
+				},
+				experimental = {
+					actions = {
+						open_file = {
+							relative_path = false,
+						},
+					},
 				},
 			})
+
+			-- Enhanced folder and file highlighting
+			vim.cmd([[
+				hi NvimTreeFolderIcon guifg=#89b4fa
+				hi NvimTreeFolderName guifg=#89b4fa
+				hi NvimTreeOpenedFolderName guifg=#89b4fa gui=bold
+				hi NvimTreeEmptyFolderName guifg=#6c7086
+				hi NvimTreeExecFile guifg=#a6e3a1 gui=bold
+				hi NvimTreeSpecialFile guifg=#f9e2af gui=underline
+				hi NvimTreeSymlink guifg=#94e2d5
+				hi NvimTreeRootFolder guifg=#fab387 gui=bold
+				hi NvimTreeImageFile guifg=#eba0ac
+				hi NvimTreeMarkdownFile guifg=#89dceb
+			]])
 		end,
 	},
 
@@ -672,33 +1050,6 @@ require("lazy").setup({
 		end,
 	},
 
-	--[[  {
-    "mfussenegger/nvim-lint",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      local lint = require("lint")
-
-      lint.linters_by_ft = {
-        javascript = { "eslint_d" },
-        typescript = { "eslint_d" },
-        javascriptreact = { "eslint_d" },
-        typescriptreact = { "eslint_d" },
-        python = { "flake8" },
-        php = { "phpcs" },
-      }
-
-      local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-
-      vim.api.nvim_create_autocmd({ "BufEnterPost", "BufWritePost", "InsertLeave" }, {
-        group = lint_augroup,
-        callback = function()
-          lint.try_lint()
-        end,
-      })
-    end,
-  },
-]]
-
 	{
 		"mfussenegger/nvim-lint",
 		event = { "BufReadPre", "BufNewFile" },
@@ -725,6 +1076,7 @@ require("lazy").setup({
 			})
 		end,
 	},
+
 	-- ============================================================================================
 	-- GIT INTEGRATION
 	-- ============================================================================================
@@ -908,6 +1260,8 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- File explorer
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
 vim.keymap.set("n", "<leader>o", ":NvimTreeFocus<CR>", { desc = "Focus file explorer" })
+vim.keymap.set("n", "<leader>tf", ":NvimTreeFindFile<CR>", { desc = "Find current file in tree" })
+vim.keymap.set("n", "<leader>tr", ":NvimTreeRefresh<CR>", { desc = "Refresh file tree" })
 
 -- Telescope
 local builtin = require("telescope.builtin")
@@ -1005,31 +1359,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- ================================================================================================
 -- LSP DIAGNOSTIC CONFIGURATION
 -- ================================================================================================
---[[vim.diagnostic.config({
-  virtual_text = {
-    prefix = "●",
-  },
-  signs = true,
-  underline = true,
-  update_in_insert = false,
-  severity_sort = true,
-  float = {
-    focusable = false,
-    style = "minimal",
-    border = "rounded",
-    source = "always",
-    header = "",
-    prefix = "",
-  },
-})
-
--- Change diagnostic symbols in the sign column
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end]]
-
 vim.diagnostic.config({
 	virtual_text = {
 		enabled = true,
