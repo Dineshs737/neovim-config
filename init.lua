@@ -1134,7 +1134,31 @@ vim.keymap.set("v", ">", ">gv", { desc = "Indent right" })
 -- Git signs
 vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Preview hunk" })
 vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle blame" })
+-- ================================================================================================
+-- ================================================================================================
+-- CLIPBOARD OPERATIONS - Multiple Options
+-- ================================================================================================
 
+-- Option 1: Leader key combinations (RECOMMENDED)
+vim.keymap.set("v", "<leader>y", '"+y', { desc = "Copy to system clipboard" })
+vim.keymap.set("n", "<leader>y", '"+yy', { desc = "Copy line to system clipboard" })
+vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from system clipboard" })
+vim.keymap.set("v", "<leader>p", '"+p', { desc = "Paste from system clipboard" })
+vim.keymap.set("i", "<leader>p", "<C-r>+", { desc = "Paste from system clipboard in insert mode" })
+
+-- Option 2: Alternative key combinations that work better
+vim.keymap.set("v", "<C-c>", '"+y', { desc = "Copy to system clipboard" })
+vim.keymap.set("n", "<C-c>", '"+yy', { desc = "Copy line to system clipboard" })
+vim.keymap.set("n", "<C-v>", '"+p', { desc = "Paste from system clipboard" })
+vim.keymap.set("v", "<C-v>", '"+p', { desc = "Paste from system clipboard" })
+vim.keymap.set("i", "<C-v>", "<C-r>+", { desc = "Paste from system clipboard in insert mode" })
+
+-- Option 3: Function key alternatives
+vim.keymap.set("v", "<F2>", '"+y', { desc = "Copy to system clipboard" })
+vim.keymap.set("n", "<F2>", '"+yy', { desc = "Copy line to system clipboard" })
+vim.keymap.set("n", "<F3>", '"+p', { desc = "Paste from system clipboard" })
+vim.keymap.set("v", "<F3>", '"+p', { desc = "Paste from system clipboard" })
+vim.keymap.set("i", "<F3>", "<C-r>+", { desc = "Paste from system clipboard in insert mode" })
 -- ================================================================================================
 -- AUTOCOMMANDS
 -- ================================================================================================
