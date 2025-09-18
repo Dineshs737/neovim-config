@@ -158,6 +158,24 @@ nvim
 
 - `<C-\>` - Toggle floating terminal
 
+### clipboard
+
+### Option 1 (RECOMMENDED): Leader key
+
+- `<Space + y>` to copy
+- `<Space + p>` to paste
+
+### Option 2: Simple Ctrl combinations
+
+- `<Ctrl + c>` to copy
+- `<Ctrl + v>` to paste
+
+### Option 3: Function keys
+
+-`<F2>` to copy
+
+- `<F3>` to paste
+
 ## Customization
 
 The configuration is modular and can be customized:
