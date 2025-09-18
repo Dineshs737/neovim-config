@@ -172,7 +172,7 @@ nvim
 
 ### Option 3: Function keys
 
--`<F2>` to copy
+- `<F2>` to copy
 
 - `<F3>` to paste
 
